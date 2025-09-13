@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Tia Juana - Authentic Mexican Food in Merced, CA</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Bebas+Neue&display=swap');
+
+        :root {
+            --primary-color: #A31F34; /* Dark Red from logo */
+            --secondary-color: #FFC72C; /* Gold/Yellow accent */
+            --background-color: #1a1a1a;
+            --text-color: #ffffff;
+            --accent-text-color: #f0f0f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .logo-section img {
+            max-width: 150px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.5rem;
+            color: var(--secondary-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        .info-section, .menu-section, .reviews-section {
+            background-color: #242424;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 20px;
+            letter-spacing: 1.5px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .info-item h3 {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+        }
+        
+        details {
+            display: block;
+            text-align: left;
+            margin-top: 10px;
+            cursor: pointer;
+            border: 1px solid #444;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        summary {
+            font-weight: bold;
+            font-size: 1.1rem;
+            list-style: none;
+            color: var(--secondary-color);
+        }
+        
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: '+';
+            float: right;
+            font-weight: bold;
+        }
+        
+        details[open] summary::after {
+            content: '-';
+        }
+
+        details ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+
+        details li {
+            margin-bottom: 5px;
+            font-size: 1rem;
+            color: var(--accent-text-color);
+        }
+
+        /* Menu Table Styling */
+        .menu-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .menu-table th {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            text-align: left;
+            padding: 15px 0 5px;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        .menu-table td {
+            padding: 10px 0;
+            border-bottom: 1px solid #444;
+            vertical-align: top;
+        }
+        
+        .menu-item-name {
+            font-weight: bold;
+            color: var(--secondary-color);
+            padding-right: 15px;
+        }
+        
+        .menu-item-price {
+            white-space: nowrap;
+            text-align: right;
+            font-weight: bold;
+            color: var(--text-color);
+            padding-left: 15px;
+        }
+        
+        .menu-item-desc {
+            font-style: italic;
+            font-size: 0.9em;
+            color: #ccc;
+            padding-top: 5px;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .review-card {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 5px solid var(--secondary-color);
+        }
+        
+        .review-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .review-card .rating {
+            color: gold;
+            margin-bottom: 10px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .cta-button:hover {
+            background-color: #c42941;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px;
+            border-top: 1px solid #333;
+        }
+        
+        /* Media query for desktop layout */
+        @media (min-width: 768px) {
+            .header-content {
+                flex-direction: row;
+                justify-content: center;
+                gap: 40px;
+            }
+            
+            .logo-section img {
+                max-width: 200px;
+                margin-bottom: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo-section">
+                <img src="/images/bull.png" alt="La Tia Juana Logo - Bull Mascot">
+            </div>
+            <div class="hero-text">
+                <h1>La Tia Juana</h1>
+                <p>Authentic Mexican Food & Good Times in Merced, CA</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="info-section">
+            <h2>Find Us & Connect</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <h3>Address</h3>
+                    <p>425 W Main St, Merced, CA 95340</p>
+                </div>
+                <div class="info-item">
+                    <h3>Hours</h3>
+                    <details>
+                        <summary>View Our Hours</summary>
+                        <ul>
+                            <li>Monday: 11 AM – 9 PM</li>
+                            <li>Tuesday: Closed</li>
+                            <li>Wednesday: 11 AM – 9 PM</li>
+                            <li>Thursday: 11 AM – 12 AM</li>
+                            <li>Friday: 11 AM – 2 AM</li>
+                            <li>Saturday: 11 AM – 2 AM</li>
+                            <li>Sunday: 9:30 AM – 9 PM</li>
+                        </ul>
+                    </details>
+                </div>
+                <div class="info-item">
+                    <h3>Phone</h3>
+                    <p>(209) 325-4466</p>
+                </div>
+                <div class="info-item">
+                    <h3>Features</h3>
+                    <p>Live Music, Good for Watching Sports, Wi-Fi</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="menu-section">
+            <h2>Our Menu</h2>
+            <details>
+                <summary>View Our Full Menu</summary>
+                <table class="menu-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 60%;">Item</th>
+                            <th style="width: 40%; text-align: right;">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="2"><h3>Wings</h3></td>
+                        </tr>
+                        <tr>
+                            <td class="menu-item-name">Wings</td>
+                            <td class="menu-item-price"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><div class="menu-item-desc">Buffalo, spicy BBQ, buffalo lemon pepper</div></td>
+                        </tr>
+                        
+                        <tr>
+                            <td colspan="2"><h3>Tacos</h3></td>
+                        </tr>
+                        <tr>
+                            <td class="menu-item-name">Baja Fish Or Shrimp</td>
+                            <td class="menu-item-price">$18.00</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><div class="menu-item-desc">3 breaded fish or shrimp tacos topped with cabbage, TJ secret sauce, cheese, and tomato.</div></td>
+                        </tr>
+                        <tr>
+                            <td class="menu-item-name">Asada, Carnitas, Grilled Chicken, Pastor</td>
+                            <td class="menu-item-price">$14.00</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><div class="menu-item-desc">3 tacos with your choice of meat, served with onion, cilantro, salsa, grilled onions & jalapeño. (add sour cream $.75, add cheese $.75)</div></td>
+                        </tr>
+                        
+                        <tr>
+                            <td colspan="2"><h3>Appetizers & More</h3></td>
+                        </tr>
+                        <tr>
+                            <td class="menu-item-name">Asada Fries</td>
+                            <td class="menu-item-price">$17.00</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><div class="menu-item-desc">Fries topped with nacho cheese, jack cheese, choice of meat, sour cream, guacamole, and jalapeño.</div></td>
+                        </tr>
+                        <tr>
+                            <td class="menu-item-name">Mozzarella Cheese Sticks</td>
+                            <td class="menu-item-price">$9.00</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><div class="menu-item-desc">Served with marinara sauce and ranch.</div></td>
+                        </tr>
+                        <tr>
+                            <td class="menu-item-name">Papas En Diabladas</td>
+                            <td class="menu-item-price">$9.00</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><div class="menu-item-desc">Baby potatoes sautéed in house spicy sauce, topped with parmesan cheese and parsley.</div></td>
+                        </tr>
+                        <tr>
+                            <td class="menu-item-name">Street Corn</td>
+                            <td class="menu-item-price">$13.00</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><div class="menu-item-desc">Corn ribs with TJ secret sauce, queso cotija, topped with parsley.</div></td>
+                        </tr>
+                        <tr>
+                            <td class="menu-item-name">Jalapeño Poppers</td>
+                            <td class="menu-item-price">$12.00</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><div class="menu-item-desc">Crispy shell stuffed with jalapeño, cream cheese, and bacon.</div></td>
+                        </tr>
+                        <tr>
+                            <td class="menu-item-name">Fries</td>
+                            <td class="menu-item-price">$4.00</td>
+                        </tr>
+                        <tr>
+                            <td class="menu-item-name">Spicy Edamame</td>
+                            <td class="menu-item-price"></td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2"><h3>Plates & Sandwiches</h3></td>
+                        </tr>
+                        <tr>
+                            <td class="menu-item-name">Chicken Tenders With Fries</td>
+                            <td class="menu-item-price">$16.00</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><div class="menu-item-desc">5 crunchy tenders with fries. Choice of 2 sauces: BBQ, buffalo, TJ secret sauce, ranch.</div></td>
+                        </tr>
+                        <tr>
+                            <td class="menu-item-name">Chicken Wrap</td>
+                            <td class="menu-item-price">$16.00</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><div class="menu-item-desc">Breaded or grilled chicken with lettuce, tomato, TJ secret sauce, and buffalo sauce.</div></td>
+                        </tr>
+                        <tr>
+                            <td class="menu-item-name">Chicken Salad</td>
+                            <td class="menu-item-price">$16.00</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><div class="menu-item-desc">Breaded or grilled chicken on a bed of greens, tomato, onion, and house sauce.</div></td>
+                        </tr>
+                        <tr>
+                            <td class="menu-item-name">Quesadilla</td>
+                            <td class="menu-item-price">$16.00</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><div class="menu-item-desc">Your choice of meat, served with sour cream and guacamole on the side.</div></td>
+                        </tr>
+                        <tr>
+                            <td class="menu-item-name">Tj Shrimp</td>
+                            <td class="menu-item-price">$18.00</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><div class="menu-item-desc">Shell-on shrimp fried and sautéed with garlic and chili (spicy).</div></td>
+                        </tr>
+                        <tr>
+                            <td class="menu-item-name">Michelada Shrimp</td>
+                            <td class="menu-item-price">$12.00</td>
+                        </tr>
+                        <tr>
+                            <td class="menu-item-name">Bacon Cheeseburger With Fries</td>
+                            <td class="menu-item-price">$20.00</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><div class="menu-item-desc">Certified angus beef patty with bacon, provolone, TJ secret sauce, lettuce, onion, and tomato on a brioche bun.</div></td>
+                        </tr>
+                        <tr>
+                            <td class="menu-item-name">Philly Cheesesteak With Fries</td>
+                            <td class="menu-item-price">$21.00</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><div class="menu-item-desc">Certified angus beef with bell pepper, onion, and provolone on a hoagie roll.</div></td>
+                        </tr>
+                        <tr>
+                            <td class="menu-item-name">Mexican Street Dog</td>
+                            <td class="menu-item-price">$16.00</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><div class="menu-item-desc">Hot dog topped with bacon, bell pepper, grilled onions, tomato, ketchup, mayo, and mustard.</div></td>
+                        </tr>
+                        <tr>
+                            <td class="menu-item-name">Fish And Chips</td>
+                            <td class="menu-item-price">$16.00</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><div class="menu-item-desc">Crispy breaded fish with fries.</div></td>
+                        </tr>
+                        <tr>
+                            <td class="menu-item-name">Spicy Chicken Sandwich With Fries</td>
+                            <td class="menu-item-price">$19.00</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><div class="menu-item-desc">Breaded chicken breast topped with buffalo sauce, spicy pickle chips, TJ secret sauce, lettuce, and tomato on a brioche bun.</div></td>
+                        </tr>
+                        
+                        <tr>
+                            <td colspan="2"><h3>Kids</h3></td>
+                        </tr>
+                        <tr>
+                            <td class="menu-item-name">Taco, Quesadilla, Or Chicken Nuggets</td>
+                            <td class="menu-item-price">$9.00</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><div class="menu-item-desc">Served with fries.</div></td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2"><h3>Desserts</h3></td>
+                        </tr>
+                        <tr>
+                            <td class="menu-item-name">Canela Churros With Vanilla Ice Cream</td>
+                            <td class="menu-item-price">$13.00</td>
+                        </tr>
+                        
+                        <tr>
+                            <td colspan="2"><h3>Drinks</h3></td>
+                        </tr>
+                        <tr>
+                            <td class="menu-item-name">Sodas</td>
+                            <td class="menu-item-price">$4.00</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><div class="menu-item-desc">Dr Pepper, Jarritos, Pepsi, Pepsi Zero, Squirt, Starry</div></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </details>
+        </section>
+
+        <section class="reviews-section">
+            <h2>What Our Customers Say</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <h4>Susan Abney (Momachili)</h4>
+                    <p class="rating">★★★★★</p>
+                    <p>"Our server was so kind and helpful and he’s very cute too. His name is Oscar... After we eat we sat at the bar and Kandice is an amazing bartender."</p>
+                </div>
+                <div class="review-card">
+                    <h4>Antonio Cortez</h4>
+                    <p class="rating">★★★★★</p>
+                    <p>"This is the spot to be at if you want to watch Football... The service was great, Awesome Atmosphere, and right in downtown Merced!!!"</p>
+                </div>
+                <div class="review-card">
+                    <h4>Samuel Sanchotena</h4>
+                    <p class="rating">★★★★★</p>
+                    <p>"Had a super great time. Food was really amazing... Huge shout out to not only Serina and Kandace the best bartenders but to the whole TJ staff making it a pleasant experience!!"</p>
+                </div>
+            </div>
+        </section>
+        
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2023 La Tia Juana. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
